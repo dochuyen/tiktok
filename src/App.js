@@ -6,7 +6,7 @@ import Profile from 'pages/Profile';
 import UpLoad from 'pages/UpLoad/Upload';
 import Search from 'pages/Search';
 import { publicRoutes } from 'routes';
-import { DefaultLayout } from 'components/Layout';
+import { DefaultLayout } from './Layout';
 
 const App = () => {
   return (
