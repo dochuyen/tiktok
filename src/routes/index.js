@@ -2,12 +2,13 @@
 import { HeaderOnly } from "Layout";
 
 import Home from "pages/Home";
-import Following from "pages/Following";
+import Following from "pages/Following/Following";
 import Profile from "pages/Profile";
 import UpLoad from "pages/UpLoad";
 import Search from "pages/Search";
 import Header from "Layout/HeaderOnly/Header";
 import Live from "pages/Live/Live";
+import { SideBar } from "Layout/DefaultLayout/SideBar";
 const publicRoutes=[
     {path:"/", component:Home},
     {path:"/following", component:Following},
