@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
@@ -23,3 +24,6 @@ const AccountItem = ({ data }) => {
 };
 
 export default AccountItem;
+=======
+export {default as AccountItem} from './AccountItem'
+>>>>>>> 9c254c3f7aab0c342b295310ec6b5344cae49f62

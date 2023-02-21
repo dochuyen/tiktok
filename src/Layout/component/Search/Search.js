@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import AccountItem from 'components/AccountsItem';
+import { AccountItem } from 'components/AccountsItem';
 import HeadlessTippy from '@tippyjs/react/headless';
 import MenuItem from '../Popper/Menu/MenuItem';
 import Image from 'components/Image';
@@ -10,6 +10,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { useDebounce } from 'hook';
+import * as searchServicer from 'apiServices/searchServicer';
 
 const cx = classNames.bind(styles);
 
@@ -19,25 +20,22 @@ const Search = () => {
   const [showResult, setShowResult] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  const debounce=useDebounce(searchValue, 500)
+  const debounce = useDebounce(searchValue, 500);
 
   const inputRef = useRef();
   useEffect(() => {
     if (!debounce.trim()) {
-      setSearchResult([])
+      setSearchResult([]);
       return;
     }
-    setLoading(true)
 
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch(()=>{
-        setLoading(false)
-      })
+    const fetchApi = async () => {
+      setLoading(true);
+      const result = await searchServicer.search(debounce);
+      setSearchResult(result);
+      setLoading(false);
+    };
+    fetchApi();
   }, [debounce]);
 
   const handleClear = () => {
@@ -80,7 +78,7 @@ const Search = () => {
             <IoIosCloseCircleOutline />
           </button>
         )}
-        {loading&& <AiOutlineLoading3Quarters className={cx('loading')} />}
+        {loading && <AiOutlineLoading3Quarters className={cx('loading')} />}
 
         <button className={cx('search-btn')}>
           <ImSearch />

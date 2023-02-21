@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 import images from '/assets/images';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import Button from 'components/Button';
+import { Button } from 'components/Button';
 import Menu from '../Popper/Menu/index';
 import { IoLogoTiktok } from 'react-icons/io5';
 import { AiOutlineUser, AiOutlineSetting } from 'react-icons/ai';
@@ -13,8 +13,9 @@ import { MdOutlineLanguage } from 'react-icons/md';
 import { GoQuestion } from 'react-icons/go';
 import { CgKeyboard } from 'react-icons/cg';
 import { BiCloudUpload, BiMessageAltDots, BiLogIn } from 'react-icons/bi';
-import Search from '../Search';
+import { Search } from '../Search';
 import Image from 'components/Image';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -49,7 +50,20 @@ const MENU_ITEMS = [
   },
 ];
 const Header = () => {
-  const currentUser = true;
+  // const [logOut, setLogOut] = useState(false);
+  // useEffect(()=>{
+  //   if(!logOut){
+  //     setLogOut(false)
+  //   }else(
+  //    setLogOut(true)
+  //   )
+  // },[currentUser])
+
+  const [currentUser, setCurrentUser] = useState(true);
+  const handleLog =()=>{
+    // setCurrentUser(currentUser ===true?false:true)
+    // userMenu(true)
+  }
 
   //HandleLogic
   const handleMenuChange = (menuItem) => {
@@ -77,26 +91,28 @@ const Header = () => {
     ...MENU_ITEMS,
     {
       icon: <BiLogIn />,
-      title: 'login',
-      to: '/login',
+      title: 'logout',
       separate: true,
+      onclick,
     },
   ];
 
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <div className={cx('logo')}>
+        <Link to="/" className={cx('logo')}>
           <img src={images.logo} alt="TikTok" />
-        </div>
+        </Link>
         <Search />
         <div className={cx('actions')}>
           {currentUser ? (
             <>
               <Tippy delay={[0, 100]} content="Upload video">
-                <button className={cx('action-btn')}>
-                  <BiCloudUpload />
-                </button>
+                <Link to='/upload'>
+                  <button className={cx('action-btn')}>
+                    <BiCloudUpload />
+                  </button>
+                </Link>
               </Tippy>
               <Tippy delay={[0, 100]} content="Messenger">
                 <button className={cx('action-btn')}>
@@ -112,13 +128,15 @@ const Header = () => {
           ) : (
             <>
               <Button text>Upload</Button>
-              <Button primary>Login</Button>
+              <Button primary onClick={handleLog}>
+                Login
+              </Button>
             </>
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
               <img
-                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/c6a4209e12ae14e0e7f0d2a325778d1a~c5_100x100.jpeg?x-expires=1676444400&x-signature=WEl7AAufFPAS%2FgJOHmfi8DmSWlA%3D"
+                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/73242dcec546271c3d823a0172cc36ab~c5_720x720.jpeg?x-expires=1676977200&x-signature=KtjON9asTiQ%2BeV%2FJtzCKBuENJVw%3D"
                 className={cx('user-avatar')}
                 alt="Do Van Chuyen"
               />

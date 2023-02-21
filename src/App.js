@@ -1,12 +1,12 @@
 import { Fragment } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from 'pages/Home';
-import Following from 'pages/Following';
+import Following from 'pages/Following/Following';
 import Profile from 'pages/Profile';
 import UpLoad from 'pages/UpLoad';
 import Search from 'pages/Search';
 import { publicRoutes } from 'routes';
-import { DefaultLayout } from 'components/Layout';
+import { DefaultLayout } from './Layout';
 
 const App = () => {
   return (

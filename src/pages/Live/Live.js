@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Following = () => {
+const Live = () => {
   return (
     <div>
-      fl
+      Live
     </div>
   )
 }
 
-export default Following
+export default Live
