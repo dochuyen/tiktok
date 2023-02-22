@@ -59,7 +59,7 @@ const Header = () => {
   //   )
   // },[currentUser])
 
-  const [currentUser, setCurrentUser] = useState(true);
+  const [currentUser, setCurrentUser] = useState(false);
   const handleLog =()=>{
     // setCurrentUser(currentUser ===true?false:true)
     // userMenu(true)

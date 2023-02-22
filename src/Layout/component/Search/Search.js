@@ -28,7 +28,6 @@ const Search = () => {
       setSearchResult([]);
       return;
     }
-
     const fetchApi = async () => {
       setLoading(true);
       const result = await searchServicer.search(debounce);
