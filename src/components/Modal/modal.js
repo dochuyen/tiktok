@@ -12,7 +12,7 @@ function ModalMy() {
     setIsModalOpen(!isModalOpen);
   }
 
-  function handleEditClick() {
+  const handleShowClick=()=> {
     setIsModalOpen(true);
   }
 
@@ -23,7 +23,7 @@ function ModalMy() {
   return (
     <div>
       <button onClick={handleEditClick}  >Sửa hồ sơ</button>
-      {modal &&C
+      {isModalOpen &&
        <div className={cx("modal")}>
         <div onClick={handleEditClick } className={cx("overlay")}>
 
