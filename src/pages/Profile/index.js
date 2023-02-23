@@ -8,83 +8,14 @@ import ModalMy from 'components/Modal/modal';
 const cx = classNames.bind(styles);
 
 const Profile = () => {
-  const Data = [
-    {
-      MV: 'https://www.youtube.com/embed/EnkPJV16Jf8',
-      title: 'Painting company',
-      discription:
-        'Marketing 360® has been an integral part of our marketing. Having an account manager that helps you with all of your marketing, not just your branding online, is a huge component and a huge asset.',
-    },
-    {
-      MV: 'https://www.youtube.com/embed/vduDCS9sHus',
-      title: 'Contractor',
-      discription:
-        "We've always seen a return of six or seven times our investment. As far as I know, now it's a simple equation. You get good management, you spend the right target amount of money, there's gonna be a return on your investment.",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/RSnhEuwyVW0',
-      title: 'E-Commerce store',
-      discription:
-        "With Marketing 360®, we're able to create artwork specific to everyone's needs across the country by marketing to everyone across the country. Every day we have new orders to fulfill, and we have a lot of fun doing it.",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/-PXM6Wg4LqY',
-      title: 'Yoga studio',
-      discription:
-        "Marketing 360® is one of the most powerful tools we've used. Previously, we've seen other studios using multiple platforms to get the same type of experience that's all in one place with Marketing 360®. It's like having an entire marketing and advertising team in our back pocket.",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/t9hgJjA_85c',
-      title: 'E-Commerce store',
-      discription:
-        "The great thing about Marketing 360® is the small town feel of the company, but with the backing of a big business. We've been able to leverage that by really getting help with everything we need from a marketing standpoint through one company and platform.",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/iDI_XfEhzUg',
-      title: 'E-Commerce store',
-      discription:
-        "Year to date, online sales are up 27%. What that's not considering is the increase in people that have called in to place their order over the phone, how many more people have come to us through social media and more. We think about marketing differently now.",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/oaHzj6Thzh8',
-      title: 'E-Commerce store',
-      discription:
-        "Get team swag and apparel that represents your brand! It is as simple as letting us know what you need and when you need it, and we'll take care of the rest!",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/aI5J39DPv-Q',
-      title: 'Dermatologist',
-      discription:
-        'Marketing 360® has grown our practice to capacity quicker than we could have expected or done on our own. They have allowed us to focus on other parts of our business more successfully because we fully trust what they are doing to improve our return and grow our business.',
-    },
-    {
-      MV: 'https://www.youtube.com/embed/k5y6v7XUbQY',
-      title: 'Equipment contractor',
-      discription:
-        "Up until recently, Wagner has predominantly grown from word of mouth based on the iconic Caterpillar name, a robust sales force and extensive community involvement. But now, we're taking a more assertive approach with our digital efforts through our partners at Marketing 360®.",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/LWxbYtvcNJY',
-      title: 'Chiropractor',
-      discription:
-        "Marketing 360® has allowed us to get our story and the purpose of our company out in front of people. It is a one-stop shop that can personalize your business's existence, put you on the map and help you reach your dreams and goals.",
-    },
-    {
-      MV: 'https://www.youtube.com/embed/kHrq5GRiXEs',
-      title: 'Auto repair shop',
-      discription:
-        'Marketing 360® is responsible for helping us generate millions in new business over the past seven years. We have had to brainstorm and challenge the status quo but it has paid off in spades. Marketing 360® fuels my brand.',
-    },
-  ];
-
-  const tabs = ['posts', 'albums'];
-  const [posts, setPosts] = useState([]);
-  const [type, setType] = useState('posts');
+  const tabs = ['Videos', 'Likeds'];
+  const [videos, setVideos] = useState([]);
+  const [type, setType] = useState('Videos');
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/1/${type} `)
       .then((res) => res.json())
-      .then((posts) => {
-        setPosts(posts);
+      .then((videos) => {
+        setVideos(videos);
       });
   }, [type]);
 
@@ -132,16 +63,16 @@ const Profile = () => {
           {tabs.map((tab) => (
             <button
               key={tab}
-              style={type === tab ? { color: '#fff', backgroundColor: '#333' } : {}}
+              style={type === tab ? { color: '#fff', backgroundColor: '#222' } : {}}
               onClick={() => setType(tab)}
             >
               {tab}
             </button>
           ))}
         </div>
-        {Data.map((datas) => {
-          return <div className={cx('tiktok-video')}></div>;
-        })}
+        {/* {videos.map((video) => {
+          return  */}
+        <div className={cx('tiktok-video')}></div>{/* })} */}
       </div>
     </div>
   );
