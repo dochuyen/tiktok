@@ -108,9 +108,11 @@ const Header = () => {
           {currentUser ? (
             <>
               <Tippy delay={[0, 100]} content="Upload video">
+                <Link to='upload'>
                 <button className={cx('action-btn')}>
                   <BiCloudUpload />
                 </button>
+                </Link>
               </Tippy>
               <Tippy delay={[0, 100]} content="Messenger">
                 <button className={cx('action-btn')}>
