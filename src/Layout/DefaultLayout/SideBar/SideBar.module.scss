@@ -1,5 +1,8 @@
 .wrapper {
-  width: 365px;
+  position: fixed;
+  width: 340px;
+  margin-top: var(--default-layout-header-height,60px);
+  
 }
 .nav-side {
   display: flex;

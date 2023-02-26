@@ -58,10 +58,7 @@ const Login = () => {
   };
 
   const chooseSuggest = (text) => {
-    setAccount({
-      ...account,
-      user: text,
-    })
+    
   };
 
   const handlePassChange = (event) => {

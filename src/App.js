@@ -4,9 +4,12 @@ import Home from 'pages/Home';
 import Following from 'pages/Following/Following';
 import Profile from 'pages/Profile';
 import UpLoad from 'pages/UpLoad/Upload';
-import Search from 'pages/Search';
+import Login from 'pages/Login/Login';
+
+import {HeaderOnly} from './Layout';
 import { publicRoutes } from 'routes';
 import { DefaultLayout } from './Layout';
+import Layoutfake from 'Layout/Layoutfake/Layoutfake';
 
 const App = () => {
   return (
@@ -15,25 +18,36 @@ const App = () => {
         <Routes>
           {publicRoutes.map((route, index) => {
             const Page = route.component;
+            const PageFake=route.component
 
             let Layout = DefaultLayout;
+            let LayoutFake=Layoutfake
             if (route.layout) {
               Layout = route.layout;
             } else if (route.layout === null) {
-              Layout = Fragment;
+              LayoutFake = route.layout;
             }
             return (
               <Route
                 key={index}
                 path={route.path}
                 element={
-                  <DefaultLayout>
-                    <Page />
-                  </DefaultLayout>
+                  <>
+                    <DefaultLayout>
+                      <Page />
+                    </DefaultLayout>
+        
+                  </>
                 }
               />
             );
           })}
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/upload' element={
+            <HeaderOnly>
+              <UpLoad/>
+            </HeaderOnly>
+          }></Route>
         </Routes>
       </div>
     </BrowserRouter>

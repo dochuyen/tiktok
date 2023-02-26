@@ -128,7 +128,7 @@ const UpLoad = () => {
         </div>
       </div>
 
-      <Login></Login>
+      
       <Footer></Footer>
     </div>
   );

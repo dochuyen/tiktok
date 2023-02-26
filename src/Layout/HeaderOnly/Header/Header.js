@@ -4,7 +4,7 @@ import images from '/assets/images';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Button } from 'components/Button';
-import Menu from '../Popper/Menu/index';
+import Menu from 'Layout/component/Popper/Menu';
 import { IoLogoTiktok } from 'react-icons/io5';
 import { AiOutlineUser, AiOutlineSetting } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
@@ -13,11 +13,11 @@ import { MdOutlineLanguage } from 'react-icons/md';
 import { GoQuestion } from 'react-icons/go';
 import { CgKeyboard } from 'react-icons/cg';
 import { BiCloudUpload, BiMessageAltDots, BiLogIn } from 'react-icons/bi';
-import { Search } from '../Search';
+import { Search } from 'Layout/component/Search';
 import Image from 'components/Image';
 import { Link } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
-import Login from 'pages/Login/Login';
+
 
 const cx = classNames.bind(styles);
 

@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import ReelsHome from 'components/ReelsHome/ReelsHome';
+import styles from './Home.module.scss'
+import classNames from 'classnames/bind';
 
+const cx=classNames.bind(styles)
 const Home = () => {
   const [user, setUser] = useState([]);
   const [showUser, setshowUser] = useState(false);
@@ -31,12 +34,12 @@ const Home = () => {
     };
   }, []);
   return (
-    <>
+    <div className={cx('wrapper')}>
       {user.map(use=>(
 
       <ReelsHome key={use.id} data={use}/>
       ))}
-    </>
+    </div>
   );
 };
 export default Home;

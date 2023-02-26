@@ -1,11 +1,12 @@
-import Header from "./Header";
-
+import Header from './Header/Header';
+import classNames from 'classnames/bind';
+import styles from './HeaderOnly.module.scss'
 
 import React from 'react'
-
+const cx=classNames.bind(styles)
 const HeaderOnly = ({children}) => {
   return (
-    <div>
+    <div className={cx('wrapper')}>
       <Header/>
       <div className="container">
         <div className="content">{children}</div>
