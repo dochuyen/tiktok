@@ -106,3 +106,20 @@ $textSize: 14px;
 .platformName{
     margin-left: 30%;
 }
+.suggestions{
+    position: relative;
+    top: -11px;
+    z-index: 10;
+    width: 100%;
+    border: 1px solid rgb(181, 170, 170);
+    border-radius: 10px;
+}
+.suggestion{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(181, 170, 170);
+}
+.suggestion:hover{
+    background-color:lightgray;
+    cursor: pointer;
+}
