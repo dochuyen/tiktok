@@ -2,7 +2,7 @@ $btnColor:rgba(254,44,85,1);
 $textSize: 14px;
 
 .container{
-    width: 700px;
+    width: 45%;
     border: 0.5px solid ghostwhite;
     border-radius: 10px;
     box-shadow: -1px 0px 12px -2px #c8bcbc;
@@ -11,6 +11,8 @@ $textSize: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 28%;
+    
 }
 .title{
     font-size: 35px;
