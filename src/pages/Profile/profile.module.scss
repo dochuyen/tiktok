@@ -1,0 +1,88 @@
+.wrapper {
+  display: block;
+  padding: 32px 24px 32px 24px;
+}
+.user {
+  display: flex;
+
+  .avatar {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+  }
+  .getName {
+    min-width: 398px;
+    margin-left: 20px;
+    h4 {
+      font-weight: bold;
+    }
+    button {
+      background-color: dimgray;
+      padding: 0 16px 0 16px;
+      border-radius: 4px;
+      height: 36px;
+      font-size: 16px;
+      font-weight: 600;
+      border-color: rgba(255, 255, 255, 0);
+      color: #fff;
+      margin-top: 10px;
+    }
+  }
+  .share {
+    background-color: transparent;
+    cursor: pointer;
+
+    font-size: 25px;
+  }
+}
+.status {
+  margin-top: 22px;
+  display: block;
+  ul > li {
+    display: inline-flex;
+    margin-right: 20px;
+  }
+  span {
+    margin-left: 6px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+  }
+}
+.act-user {
+  margin-top: 20px;
+  display: block;
+}
+.btn-tabs {
+  display: flex;
+}
+.btn-tabs > button {
+  width: 230px;
+  height: 44px;
+  font-family: 'IBM Plex Sans', SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border-bottom: #666 2px solid;
+  border-radius: 4px;
+}
+.tiktok-video {
+  width: 187px;
+  height: 248px;
+  object-fit: cover;
+  border: 1px solid #666;
+  border-radius: 10px;
+  display: inline-flex;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin-right: 10px;
+}

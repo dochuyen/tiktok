@@ -59,7 +59,7 @@ const Header = () => {
   //   )
   // },[currentUser])
 
-  const [currentUser, setCurrentUser] = useState(true);
+  const [currentUser, setCurrentUser] = useState(false);
   const handleLog =()=>{
     // setCurrentUser(currentUser ===true?false:true)
     // userMenu(true)
@@ -108,10 +108,12 @@ const Header = () => {
           {currentUser ? (
             <>
               <Tippy delay={[0, 100]} content="Upload video">
-                <Link to='upload'>
-                <button className={cx('action-btn')}>
-                  <BiCloudUpload />
-                </button>
+
+                <Link to='/upload'>
+                  <button className={cx('action-btn')}>
+                    <BiCloudUpload />
+                  </button>
+
                 </Link>
               </Tippy>
               <Tippy delay={[0, 100]} content="Messenger">
