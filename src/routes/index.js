@@ -5,7 +5,7 @@ import { HeaderOnly } from 'Layout';
 import Home from 'pages/Home';
 import Following from 'pages/Following/Following';
 import Profile from 'pages/Profile';
-import UpLoad from 'pages/UpLoad';
+import UpLoad from 'pages/UpLoad/Upload';
 import Search from 'pages/Search';
 import { Header } from 'Layout/component/Header';
 const publicRoutes = [
