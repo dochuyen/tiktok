@@ -9,10 +9,10 @@ import { GiSoundOn } from 'react-icons/gi';
 import Tippy from '@tippyjs/react';
 import { Link } from 'react-router-dom';
 import { tippy } from '@tippyjs/react';
-import {ImEmbed2} from 'react-icons/im'
-import {FiSend} from 'react-icons/fi'
-import {BiCopy} from 'react-icons/bi'
-import {RiArrowDropDownLine} from 'react-icons/ri'
+import { ImEmbed2 } from 'react-icons/im';
+import { FiSend } from 'react-icons/fi';
+import { BiCopy } from 'react-icons/bi';
+import { RiArrowDropDownLine } from 'react-icons/ri';
 
 import video from './video/video.mp4';
 import { useParams } from 'react-router-dom';
@@ -20,45 +20,55 @@ import { useParams } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 const ReelsHome = ({ data }) => {
+  const shareMenus = [
+    {
+      icon: <ImEmbed2 />,
+      text: 'Embed',
+    },
+    {
+      icon: <FiSend />,
+      text: 'Send to friends',
+    },
+    {
+      icon: <BsFacebook />,
+      text: 'Share to Facebook',
+    },
+    {
+      icon: <BiCopy />,
+      text: 'Copy link',
+    },
+  ];
 
-  const shareMenus=[
-    {
-      icon:<ImEmbed2/>,
-      text:'Embed'
-    },
-    {
-      icon:<FiSend/>,
-      text:'Send to friends'
-    },
-    {
-      icon:<BsFacebook/>,
-      text:'Share to Facebook'
-    },
-    {
-      icon:<BiCopy/>,
-      text:'Copy link'
-    },
-  ]
-
-  const storageTyms = localStorage.countTym;
+  const storageTyms = localStorage.getItem('countTym');
 
   const [follow, setFollow] = useState('Follow');
   const [tym, setTym] = useState('');
-  const [countTym, setCountTym] = useState(`${data.id}`);
+  const [countTym, setCountTym] = useState(+`${data.tym}`);
 
   const handleFollow = () => {
     setFollow(follow === 'Follow' ? 'Following' : 'Follow');
   };
 
-  useEffect(() => {}, [countTym]);
+  // useEffect(() => {
+  //   fetch('https://63de107ff1af41051b0d0b2c.mockapi.io/videotiktok', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ name: 'TikTok Video 1' }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   const handleTym = () => {
     setTym(tym === '' ? 'var(--primary)' : '');
     setCountTym(countTym + 1);
-    if (countTym % 2 === 0) {
-      setCountTym(countTym - 1);
-    } else {
+    if (countTym === +`${data.tym}`) {
       setCountTym(countTym + 1);
+    } else {
+      setCountTym(countTym - 1);
     }
   };
 
@@ -66,22 +76,22 @@ const ReelsHome = ({ data }) => {
     <div className={cx('wrapper')}>
       <div className={cx('top-top')}>
         <Link className={cx('avt')} to="/profile/@chuyenn">
-          <img className={cx('avt-user')} src={data.avatar} />
+          <img className={cx('avt-user')} src={data.avt} />
         </Link>
         <div className={cx('reel')}>
           <div className={cx('info')}>
             <div className={cx('info-child')}>
-              <Link className={cx('use')} to={`/profile/@${data.nickname}`}>
-                <p className={cx('user-name')}>{data.last_name}</p>
+              <Link className={cx('use')} to={`/profile/@${data.name}`}>
+                <p className={cx('user-name')}>{data.name}</p>
                 {data.tick && <BsFillCheckCircleFill className={cx('check')} />}
                 <p className={cx('name')}>{data.nickname}</p>
               </Link>
-              <p className={cx('content')}>{data.bio}</p>
+              <p className={cx('content')}>{data.content}</p>
               <h4 className={cx('sound')}>
                 <span className={cx('icon-sound')}>
                   <GiSoundOn />
                 </span>
-                {data.updated_at}
+                {data.song}
               </h4>
             </div>
             <Button className={cx('btn')} onClick={handleFollow} outline>
@@ -100,24 +110,22 @@ const ReelsHome = ({ data }) => {
               <button className={cx('icon-chil')}>
                 <AiOutlineComment className={cx('icon')} />
               </button>
-              <strong className={cx('count')}>{data.followings_count}</strong>
+              <strong className={cx('count')}>{data.cmt}</strong>
               <Tippy
                 delay={[0, 100]}
-                
                 render={(attts) => (
                   <div className={cx('shares')} tabIndex="-1" {...attts}>
                     <div className={cx('share')}>
-                      {shareMenus.map((shareMenu, index)=>(
+                      {shareMenus.map((shareMenu, index) => (
                         <div className={cx('share-wrapper')}>
                           <span className={cx('share-icon')}>{shareMenu.icon}</span>
                           <button className={cx('btn-share')}>{shareMenu.text}</button>
                         </div>
                       ))}
                       <button className={cx('drop')}>
-                        <RiArrowDropDownLine className='icon-drop'/>
+                        <RiArrowDropDownLine className="icon-drop" />
                       </button>
                     </div>
-                    
                   </div>
                 )}
               >
@@ -125,7 +133,7 @@ const ReelsHome = ({ data }) => {
                   <FaShare className={cx('icon')} />
                 </button>
               </Tippy>
-              <strong className={cx('count')}>{data.followers_count}</strong>
+              <strong className={cx('count')}>{data.share}</strong>
             </div>
           </div>
         </div>

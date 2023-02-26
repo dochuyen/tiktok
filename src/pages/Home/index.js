@@ -6,14 +6,13 @@ const Home = () => {
   const [showUser, setshowUser] = useState(false);
   const [randomReels, setRandomReels] = useState();
   useEffect(() => {
-    fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=q&type=less`)
+    fetch('https://63de107ff1af41051b0d0b2c.mockapi.io/videotiktok')
     .then(res=>res.json())
     .then((res)=>{
-      setUser(res.data)
-      console.log(res.data)
+      setUser(res)
+      console.log(res)
     })
-  }, [showUser]);
-
+  }, []);
   
 
   useEffect(() => {

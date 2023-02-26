@@ -128,7 +128,7 @@ const Header = () => {
           ) : (
             <>
               <Button text>Upload</Button>
-              <Button primary onClick={handleLog}>
+              <Button to='/login' style={{color:'#fff'}} primary onClick={handleLog}>
                 Login
               </Button>
             </>
