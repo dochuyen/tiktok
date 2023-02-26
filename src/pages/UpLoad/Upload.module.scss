@@ -1,0 +1,211 @@
+$textColor: rgb(132, 127, 127);
+$textSize: 14px;
+.uploadContainer{
+    box-sizing: border-box;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: -1px 0px 12px -2px #c8bcbc;
+    border-radius: 10px;
+}
+
+.bigTitle{
+    font-size: 25px;
+    font-weight: 1000;
+    line-height: 1.5;
+}
+.smallTitle{
+    margin-top: 5px;
+    color: $textColor;
+    margin-bottom: 40px;
+}
+.uploadBody{
+    display: flex;
+    align-items: center;
+}
+.uploadField{
+    border: 1px dashed;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    border-radius: 10px;
+    padding: 60px 25px;
+    border-color: $textColor;
+    height: fit-content;
+}
+
+.uploadFieldBigTitle{
+    font-size: 20px;
+    font-weight: 1000;
+    margin-top: 25px;
+}
+.uploadFieldTitle{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    font-size: $textSize;
+}
+.uploadFieldContent{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.uploadContent{
+    color: $textColor;
+    font-size: $textSize;
+    margin: 5px;
+    width: max-content;
+}
+.uploadBtn{
+    position: relative;
+    right: -23%;
+    margin-top: 30px;
+    background-color: rgba(254,44,85,1);
+    color: white;
+    text-decoration: none;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+label{
+    cursor: pointer;
+    margin: 25px 50px;
+    width: max-content;
+    font-weight: 700;
+    font-size: 16px;
+}
+.adjustField{
+    margin-left: 20px;
+}
+
+.fixField{
+    display: flex;
+   
+    background-color: rgb(241, 237, 237);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+}
+.fixIcon{
+    margin: 10px;
+    position: relative;
+    top: -9px;  
+}
+.fieldTile{
+    font-weight: 1000;
+}
+.fieldContent{
+    color: $textColor;
+    font-size: $textSize;
+}
+.btn{
+    font-weight: 700;
+    background-color: rgba(254,44,85,1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 150px;
+    padding: 10px 10px;
+    border-radius: 4px;
+    margin: 10px;
+    cursor: pointer;
+}
+.noteField{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.noteContent{
+    display: flex;
+    justify-content: space-between;
+}
+.numberOfChar{
+    font-size: $textSize;
+    color: $textColor;
+}
+.inputNote{
+    border: 1px solid $textColor;
+    border-radius: 2px;
+    line-height: 20px;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.inputNoteChoice{
+    margin: 5px;
+    cursor: pointer;
+    font-weight: 1000;
+}
+.inputNoteChoice:hover{
+    font-weight: 100;
+}
+.cover{
+    height: 160px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.restrictOption{
+    width: 300px;
+    height: 36px;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.Option{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8rem;
+}
+.allow{
+    margin: 20px 0px;
+}
+
+label{
+    margin: 30px 10px;
+}
+.checkbox1{
+    background-color: rgba(254,44,85,1);
+    color: white;
+    cursor: pointer;
+}
+
+.authorHead{
+    margin-bottom: 10px;
+}
+.author{
+    margin-bottom: 20px;
+}
+.buttons{
+    display: flex;
+    margin-bottom: 80px;
+}
+.cancelBtn{
+    font-weight: 700;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    width: 150px;
+    padding: 10px 10px;
+    border-radius: 4px;
+    margin: 10px;
+    cursor: pointer;
+}
+.cancelBtn:hover{
+    background-color: rgb(233, 227, 227);
+}
+.authorHead{
+    display: flex;
+
+}

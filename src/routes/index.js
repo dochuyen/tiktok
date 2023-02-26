@@ -1,5 +1,6 @@
 //Layout
 
+
 import { HeaderOnly } from 'Layout';
 import Home from 'pages/Home';
 import Following from 'pages/Following/Following';
@@ -14,6 +15,7 @@ const publicRoutes = [
   { path: '/upload', component: UpLoad, layout: HeaderOnly },
   { path: '/search', component: Search, layout: null },
 ];
+
 
 
 const privateRoutes = [];

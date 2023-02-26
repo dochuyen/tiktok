@@ -1,0 +1,125 @@
+$btnColor:rgba(254,44,85,1);
+$textSize: 14px;
+
+.container{
+    width: 700px;
+    border: 0.5px solid ghostwhite;
+    border-radius: 10px;
+    box-shadow: -1px 0px 12px -2px #c8bcbc;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    font-size: 35px;
+    font-weight: 1000;
+    margin-bottom: 40px;
+}
+.userNameChoice{
+    display: flex;
+    justify-content:space-between;
+    font-weight: 1000;
+    margin-bottom: 10px;
+}
+.userName{
+    border: 1px solid lavender;
+    border-radius: 6px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.userNameFalse{
+    border: 1px solid red;
+    border-radius: 6px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0px;
+}
+.passWord{
+    border: 1px solid lavender;
+    border-radius: 6px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 0px;
+}
+.passWordFalse{
+    border: 1px solid red;
+    border-radius: 6px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 20px 0px;
+}
+.forgotPass{
+    font-weight: 800;
+    cursor: pointer;
+    margin: 20px 0px;
+}
+.loginButton{
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: $btnColor;
+    color: white;
+    font-weight: 600;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+.otherChoice{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+}
+.otherChoiceTitle{
+    font-size: 25px;
+    position: relative;
+    top: -18px;
+    font-weight: 500;
+}
+.platform{
+    width: 100%;
+    border: 1px solid lavender;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 15px;
+    margin: 20px 0px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.platformName{
+    margin-left: 30%;
+}
+.suggestions{
+    position: relative;
+    top: -11px;
+    z-index: 10;
+    width: 100%;
+    border: 1px solid rgb(181, 170, 170);
+    border-radius: 10px;
+}
+.suggestion{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(181, 170, 170);
+}
+.suggestion:hover{
+    background-color:lightgray;
+    cursor: pointer;
+}
