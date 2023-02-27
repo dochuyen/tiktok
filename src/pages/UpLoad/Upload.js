@@ -24,7 +24,7 @@ const UpLoad = () => {
     setCharNumber(num);
   };
   return (
-    <div>
+    <div className={cx('wrapper')}>
       <div className={cx('uploadContainer')}>
         <div className={cx('title')}>
           <div className={cx('bigTitle')}>Tải video lên</div>

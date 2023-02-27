@@ -1,0 +1,55 @@
+.wrapper {
+  position: fixed;
+  width: 200px;
+margin-left: 20px;
+  
+}
+.nav-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+.nav-foryou {
+    // display: flex;
+    // align-items: center;
+  padding-left: 0;
+  margin-left: 0 !important;
+  justify-content: start;
+  width: 100%;
+  height: 4.4rem;
+  border-radius: 3px;
+
+  &:hover{
+    background-color: rgba(22, 24, 35, 0.03);
+  }
+}
+
+.nav-title{
+    font-size: 2rem;
+    color: rgba(22, 24, 35, 1);
+}
+.nav-icon{
+    margin-right: 0.8rem;
+}
+
+.suggested{
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+
+}
+
+.suggested-chil{
+  margin:1.2rem 0 1rem 0;
+  color: rgba(22, 24, 35, .75);
+}
+.following-accounts{
+  margin-top: 1.2rem;
+  border-top: 1px solid rgba(22, 24, 35, 0.12);
+
+}
+.fl{
+  margin:1.2rem 0 1rem 0;
+  color: rgba(22, 24, 35, .75);
+}

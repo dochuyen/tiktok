@@ -1,13 +1,16 @@
 $textColor: rgb(132, 127, 127);
 $textSize: 14px;
+
 .uploadContainer{
+    position: relative;
+    top :60px;
     box-sizing: border-box;
-    margin: 20px;
     padding: 20px;
     box-shadow: -1px 0px 12px -2px #c8bcbc;
     border-radius: 10px;
     width: 75%;
     margin: 30px 12.5%;
+
 }
 
 .bigTitle{

@@ -35,12 +35,12 @@ const Following = () => {
     };
   }, []);
   return (
-    <>
+    <div className={cx('wrapper')}>
       {user.map(use=>(
 
       <ReelsFollowing key={use.id} data={use}/>
       ))}
-    </>
+    </div>
   );
 };
 export default Following;

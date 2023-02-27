@@ -9,7 +9,6 @@ import Login from 'pages/Login/Login';
 const publicRoutes = [
   { path: '/', component: Home },
   { path: '/following', component: Following },
-  { path: `/profile/:id`, component: Profile },
 ];
 
 

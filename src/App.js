@@ -48,6 +48,11 @@ const App = () => {
               <UpLoad/>
             </HeaderOnly>
           }></Route>
+          <Route path='/profile/:id' element={
+            <Layoutfake>
+              <Profile/>
+            </Layoutfake>
+          }></Route>
         </Routes>
       </div>
     </BrowserRouter>
