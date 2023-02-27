@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './profile.module.scss';
-import { TbEdit } from 'react-icons/tb';
 import { RiShareForwardLine } from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 import ModalMy from 'components/Modal/modal';
@@ -12,7 +11,7 @@ const Profile = () => {
   const [videos, setVideos] = useState([]);
   const [type, setType] = useState('Videos');
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/1/${type} `)
+    fetch(`https://63fc218d859df29986b7118e.mockapi.io/${type}`)
       .then((res) => res.json())
       .then((videos) => {
         setVideos(videos);
@@ -41,7 +40,7 @@ const Profile = () => {
           <ul>
             <li>
               <h3>
-                100 <span>Đang Follow</span>{' '}
+                100 <span>Đang Follow</span>
               </h3>
             </li>
             <li>
@@ -70,9 +69,20 @@ const Profile = () => {
             </button>
           ))}
         </div>
-        {/* {videos.map((video) => {
-          return  */}
-        <div className={cx('tiktok-video')}></div>{/* })} */}
+        {videos.map((video) => {
+          return (
+            <div className={cx('list-videos')}>
+              <div className={cx('box-video')}>
+                <div className={cx('content-video')}>
+                  <div className={cx('tiktok-video')}>Video</div>
+                </div>
+                <div>
+                  <h5>Content</h5>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
