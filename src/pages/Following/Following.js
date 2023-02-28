@@ -16,6 +16,7 @@ const Following = () => {
       console.log(res)
     })
   }, []);
+  
 
   
 
@@ -38,7 +39,7 @@ const Following = () => {
     <div className={cx('wrapper')}>
       {user.map(use=>(
 
-      <ReelsFollowing key={use.id} data={use}/>
+      <ReelsFollowing key={use.id} data={use} setUser={setUser}/>
       ))}
     </div>
   );

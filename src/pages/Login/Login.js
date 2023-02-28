@@ -7,8 +7,12 @@ import { BsGoogle } from 'react-icons/bs';
 import { BsApple } from 'react-icons/bs';
 import { RiEyeCloseLine } from 'react-icons/ri';
 import { RiEyeFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
+
 const cx = classNames.bind(styles);
 const Login = () => {
+
+  const [currentUser, setCurrentUser]=useState(false)
 
   const [userValid, setUserValid] = useState(true);
   const [passValid, setPassValid] = useState(true);
@@ -87,14 +91,14 @@ const Login = () => {
          else{
            localStorage.id=suggestion[i].id
          }
-         
+      setCurrentUser(true)
     }
       else{
         setLoginValid(false);
       }
   }
- 
-  }
+ }
+
 
   
   return (
@@ -132,9 +136,15 @@ const Login = () => {
           <div style={{ color: 'red' }}>{passValid ? '' : 'Your password is invalid!'}</div>
         </div>
         <div className={cx('forgotPass')}>Forgot passWord?</div>
-        <button className={cx('loginButton')} type="submit" onClick={handleLogin}>
+        {!currentUser ? (
+          <button className={cx('loginButton')} type="submit" onClick={handleLogin}>
           Log in
         </button>
+        ):(
+          <Link className={cx('loginLink')} type="submit" to='/' onClick={handleLogin}>
+          Log in
+        </Link>
+        ) }
         <div className={cx('otherChoice')}>
           <hr style={{ width: '40%' }}></hr>
           <span className={cx('otherChoiceTitle')}>Or</span>
