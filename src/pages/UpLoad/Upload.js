@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './Upload.module.scss';
 import classNames from 'classnames/bind';
 import Footer from './Footer';
@@ -6,8 +6,21 @@ import Login from 'pages/Login/Login';
 import Toggle from './Toggle';
 
 const cx = classNames.bind(styles);
+const videoUploaded='';
 const UpLoad = () => {
   const [charNumber, setCharNumber] = useState(0);
+  const [users,setUsers]=useState([])
+
+  useEffect(() => {
+    fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
+      .then((res) => res.json())
+      .then((res) => {
+        setUsers(res);
+      });
+  }, []);
+
+const idUser=localStorage.key; 
+console.log(idUser)
 
   const handleRecivedFile = (e) => {
     const file = e.target.files[0]
@@ -15,6 +28,7 @@ const UpLoad = () => {
     reader.readAsDataURL(file);
     reader.onload = () => {
       console.log(reader.result)
+      videoUploaded=reader.result;
     }
   }
 
@@ -31,7 +45,7 @@ const UpLoad = () => {
           <div className={cx('smallTitle')}>Đăng video vào tài khoản của bạn</div>
         </div>
         <div className={cx('uploadBody')}>
-          <div className={cx('uploadField')}>
+          <div className={videoUploaded? cx('uploadFieldVideo'): cx('uploadField')}>
             <div className={cx('uploadIcon')}>
               <img src="https://lf16-tiktok-common.ttwstatic.com/obj/tiktok-web-common-sg/ies/creator_center/svgs/cloud-icon1.ecf0bf2b.svg"></img>
             </div>
