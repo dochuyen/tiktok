@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 export function AvatarEdit() {
   const [avatar, setAvatar] = useState();
-
   useEffect(() => {
     return () => {
       avatar && URL.revokeObjectURL(avatar.preview);

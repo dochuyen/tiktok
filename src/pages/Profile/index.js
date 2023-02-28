@@ -8,83 +8,92 @@ const cx = classNames.bind(styles);
 
 const Profile = () => {
   const tabs = ['Videos', 'Likeds'];
-  const [videos, setVideos] = useState([]);
+  const [data, setData] = useState([]);
   const [type, setType] = useState('Videos');
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
+
   useEffect(() => {
-    fetch(`https://63fc218d859df29986b7118e.mockapi.io/${type}`)
+    fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
       .then((res) => res.json())
-      .then((videos) => {
-        setVideos(videos);
+      .then((res) => {
+        setUsers(res);
       });
-  }, [type]);
+  }, []);
+
+  const idUser = localStorage.key;
+
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id == idUser) {
+      setUser(users[i]);
+    }
+  }
 
   return (
-    <div className={cx('wrapper')}>
-      <div className={cx('profile')}>
-        <div className={cx('user')}>
-          <img
-            className={cx('avatar')}
-            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHgAeAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAwUCBAYBB//EACwQAAICAQMCBQMEAwAAAAAAAAABAgMRBCExBRIiQVFhcTJSYhMUkdEjobH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/APpgANMgAAAGdVU7pdtcXJgYA3F06/bPas878G3DplKXicpP1zgaqoBa2dLra/xzcX77or76LKJdtixnh+TGiIABAAAAAAAAAAASUVO+2NcfPz9C9qqhVWoQWEv9mn0mntrdr5lsvg3yVYAAihhbXG2twmspmYA5++qVFrrl5cP1RGW3Vae6pWrmHPwVJqIAAIAAAAAB6k20lyzwl0qzqak/vQF7XBV1xguIrBkAZaAAAAAGNkVOEoPiSwc81h4fKOjOf1KxqbV5d7/6WJUYAKgAAAAAEuleNTU/zREe5aaa5W6A6MGNc1ZXGa4ksoyMtAAAAAAc9bLvtnL7pNl7fLsosl6RbOfXBYlAAVAAAAAAPcN7JZb8jw9TaacW01w0KL/TQdenrhLmMcMkKenqF8NpOMl6yX9FhHW6eTSVicnthJ8mWmwAAABry1tEXKLsSksrDTAk1EHbROC5ksIoGmm1JYa5Rt3dQvllRcYr8Uajbk25NtvlsqPAAVAAAAAAAAAm0ce/V1L8s/xuQlp0zTShm6xNNrEUxVWAAMqFFrYdmrtXrLP87l6V/U9NKeLq020sSS8ywVYAKyAAAAAABs6HTfuLfF9Efq/oKhrqsteK4uXwbtXTJve2aj7R3ZZxjGEVGKSiuEj0mmIKdJTTvGGZfc92TgEUAAAAAQXaSm7ecPF9y2ZpW9Mmt6pqXtLZloAOetqsqeLIOPyYHRyjGcXGSTT8mUuu037ezw/RLj29i6jWABUC80NX6OmiseJ7sAlWNgAEUAAAAAAAAAAAg1tP62nkl9S3XyABRIAGmX//2Q=="
-            alt="avatar"
-          />
-          <div className={cx('getName')}>
-            <h1>dankieu.ks</h1>
-            <h3>Đàn</h3>
-            <ModalMy></ModalMy>
-          </div>
-          <button className={cx('share')}>
-            <RiShareForwardLine />
-          </button>
-        </div>
-        <div className={cx('status')}>
-          <ul>
-            <li>
-              <h3>
-                100 <span>Đang Follow</span>
-              </h3>
-            </li>
-            <li>
-              <h3>
-                100K <span>Follower</span>
-              </h3>
-            </li>
-            <li>
-              <h3>
-                960.5M <span>Like</span>
-              </h3>
-            </li>
-          </ul>
-          <h2>Tiểu sử</h2>
-        </div>
-      </div>
-      <div className={cx('act-user')}>
-        <div className={cx('btn-tabs')}>
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              style={type === tab ? { color: '#fff', backgroundColor: '#222' } : {}}
-              onClick={() => setType(tab)}
-            >
-              {tab}
+    <>
+      <div className={cx('wrapper')}>
+        <div className={cx('profile')}>
+          <div className={cx('user')}>
+            <img className={cx('avatar')} src={user.avatar} alt="avatar" />
+            <div className={cx('getName')}>
+              <h1>{user.username}</h1>
+              <h3>{user.name}</h3>
+              <ModalMy></ModalMy>
+            </div>
+            <button className={cx('share')}>
+              <RiShareForwardLine />
             </button>
-          ))}
+          </div>
+          <div className={cx('status')}>
+            <ul>
+              <li>
+                <h3>
+                  100 <span>Đang Follow</span>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  {user.followers} <span>Follower</span>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  {user.likes} <span>Like</span>
+                </h3>
+              </li>
+            </ul>
+            <h2>Tiểu sử</h2>
+          </div>
         </div>
-        {videos.map((video) => {
-          return (
-            <div className={cx('list-videos')}>
-              <div className={cx('box-video')}>
-                <div className={cx('content-video')}>
-                  <div className={cx('tiktok-video')}>Video</div>
-                </div>
-                <div>
-                  <h5>Content</h5>
+
+        <div className={cx('act-user')}>
+          <div className={cx('btn-tabs')}>
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                style={type === tab ? { color: '#fff', backgroundColor: '#222' } : {}}
+                onClick={() => setType(tab)}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+          <div className={cx('list-videos')} key={user.id}>
+            <div className={cx('box-video')}>
+              <div className={cx('content-video')}>
+                <div className={cx('tiktok-video')}>
+                  <img src={user.video} alt="" />
                 </div>
               </div>
+              <div>
+                <h5> {user.content} </h5>
+              </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
       </div>
-    </div>
+      );
+    </>
   );
 };
 
