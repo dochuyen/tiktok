@@ -12,16 +12,7 @@ const Profile = () => {
   const [type, setType] = useState('Videos');
   const [users, setUsers] = useState([]);
 
-  const [user, setUser] = useState({
-    username: 'bachquanghung1911',
-    password: 'Bachquanghung@1911',
-    videos: [],
-    name: 'name 1',
-    followers: 44,
-    likes: 58,
-    avatar: '',
-    id: '1',
-  });
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
@@ -31,7 +22,7 @@ const Profile = () => {
       });
   }, []);
 
-  const idUser = parseInt(localStorage.getItem('key'));
+  const idUser = +localStorage.key;
 
   for (var i = 0; i < users.length; i++) {
     if (users[i].id == idUser) {
