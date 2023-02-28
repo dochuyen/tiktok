@@ -9,6 +9,7 @@ $colorText: rgb(133, 133, 133);
     position:relative;
     bottom: 0px;
     height: fit-content;
+    margin-top: 30px;
 }
 .footerContent{
     display: flex;
@@ -16,13 +17,14 @@ $colorText: rgb(133, 133, 133);
 }
 .footerItems{
     display: flex;
-    
+    flex-wrap: wrap;
 }
 .footerItem{
+    flex-wrap: wrap;
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
-  margin-left: 80px;
+  margin-right: 20px;
+  margin-left: 170px;
 }
 
 li{

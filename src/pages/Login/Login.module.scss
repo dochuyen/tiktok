@@ -84,6 +84,15 @@ $textSize: 14px;
     margin: 20px 0px;
     cursor: pointer;
 }
+.loginButtonFail{
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: grey;
+    color: white;
+    font-weight: 600;
+    margin: 20px 0px;
+}
 .otherChoice{
     display: flex;
     justify-content: space-between;

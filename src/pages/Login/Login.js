@@ -18,6 +18,7 @@ const Login = () => {
 
   const [searchResult, setSearchResult] = useState([]);
   const [suggestion, setSuggestion] = useState([]);
+ const [loginValid,setLoginValid]=useState(false)
 
   useEffect(() => {
     fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
@@ -43,22 +44,19 @@ const Login = () => {
         return usr.username.match(regex);
       });
     }
-   
+   setTimeout(
       setAccount({
         ...account,
         user: value,
-      });
+      }),500)
    
     setSuggestion(matches);
     setShowSuggest(true);
+  
   };
 
   const hideSuggest = () => {
     setShowSuggest(false);
-  };
-
-  const chooseSuggest = (text) => {
-    
   };
 
   const handlePassChange = (event) => {
@@ -69,16 +67,36 @@ const Login = () => {
     } else {
       setPassValid(false);
     }
-      setAccount({
+     setTimeout(setAccount({
         ...account,
         pass: value,
-      });
+      }),500)
   }
 
   function showPass() {
     setHidden((prev) => !prev);
   }
 
+  const handleLogin =()=>{
+    for(var i = 0; i < suggestion.length; i++) {
+      if(suggestion[i].username==account.user&&suggestion[i].password==account.pass){
+        setLoginValid(true)
+        if(!localStorage.id){
+          localStorage.setItem('key',suggestion[i].id)
+         }
+         else{
+           localStorage.id=suggestion[i].id
+         }
+         
+    }
+      else{
+        setLoginValid(false);
+      }
+  }
+ 
+  }
+
+  
   return (
     <div className={cx('container')} onClick={hideSuggest}>
       <div className={cx('title')}>Log in</div>
@@ -89,12 +107,12 @@ const Login = () => {
         </div>
         <div className={cx('loginDetail')}>
           <div className={userValid ? cx('userName') : cx('userNameFalse')}>
-            <input type="text" style={{ width: '80%' }} onChange={handleUserChange} value={account.user}></input>
+            <input type="text" style={{ width: '80%' }} onChange={handleUserChange}></input>
           </div>
           <div className={cx('suggestions')}>
             {showSuggest
               ? suggestion.map((suggest, i) => (
-                  <div key={i} className={cx('suggestion')} onClick={chooseSuggest(suggest.username)}>
+                  <div key={i} className={cx('suggestion')}>
                     {suggest.username}
                   </div>
                 ))
@@ -114,7 +132,7 @@ const Login = () => {
           <div style={{ color: 'red' }}>{passValid ? '' : 'Your password is invalid!'}</div>
         </div>
         <div className={cx('forgotPass')}>Forgot passWord?</div>
-        <button className={cx('loginButton')} type="submit">
+        <button className={cx('loginButton')} type="submit" onClick={handleLogin}>
           Log in
         </button>
         <div className={cx('otherChoice')}>
