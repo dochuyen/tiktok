@@ -60,12 +60,24 @@ const Header = () => {
   //    setLogOut(true)
   //   )
   // },[currentUser])
-
+  const [suggestion, setSuggestion] = useState([]);
+  const [account, setAccount] = useState({ user: '', pass: '' });
   const [currentUser, setCurrentUser] = useState(false);
-  const handleLog =()=>{
-    // setCurrentUser(currentUser ===true?false:true)
-    // userMenu(true)
-  }
+  const [loginValid, setLoginValid] = useState(false);
+
+  useEffect(()=>{
+    for (var i = 0; i < suggestion.length; i++) {
+      if (localStorage.id = suggestion[i].id) {
+        setLoginValid(true);
+        
+        setCurrentUser(true);
+        console.log('hello')
+      } else {
+        setCurrentUser(false)
+        setLoginValid(false);
+      }
+    }
+  }, [])
 
   //HandleLogic
   const handleMenuChange = (menuItem) => {
@@ -74,6 +86,14 @@ const Header = () => {
     }
   };
 
+  // const handleLogOut = () => {
+  //   for (let i = 0; i < suggestion.length; i++) {
+  //     if (localStorage.id) {
+  //       localStorage.removeItem(suggestion[i].id);
+  //       console.log('hello')
+  //     }
+  //   }
+  // };
   const userMenu = [
     {
       icon: <AiOutlineUser />,
@@ -95,7 +115,7 @@ const Header = () => {
       icon: <BiLogIn />,
       title: 'logout',
       separate: true,
-      onclick,
+      onclick
     },
   ];
 
@@ -110,12 +130,10 @@ const Header = () => {
           {currentUser ? (
             <>
               <Tippy delay={[0, 100]} content="Upload video">
-
-                <Link to='/upload'>
+                <Link to="/upload">
                   <button className={cx('action-btn')}>
                     <BiCloudUpload />
                   </button>
-
                 </Link>
               </Tippy>
               <Tippy delay={[0, 100]} content="Messenger">
@@ -131,8 +149,10 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Button to='/upload' text>Upload</Button>
-              <Button to='/login' style={{color:'#fff'}} primary onClick={handleLog}>
+              <Button to="/upload" text>
+                Upload
+              </Button>
+              <Button to="/login" style={{ color: '#fff' }} primary>
                 Login
               </Button>
             </>
@@ -152,7 +172,6 @@ const Header = () => {
           </Menu>
         </div>
       </div>
-     
     </header>
   );
 };

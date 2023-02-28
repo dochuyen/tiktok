@@ -84,6 +84,19 @@ $textSize: 14px;
     margin: 20px 0px;
     cursor: pointer;
 }
+.loginLink{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: $btnColor;
+    color: white !important;
+    font-weight: 600 !important;
+    margin: 20px 0px;
+    cursor: pointer;
+}
 .loginButtonFail{
     width: 100%;
     padding: 10px;
