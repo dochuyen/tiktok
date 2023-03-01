@@ -62,10 +62,29 @@ const Header = () => {
   // },[currentUser])
 
   const [currentUser, setCurrentUser] = useState(false);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch('https://63fa02d9897af748dcc7907c.mockapi.io/account')
+      .then((res) => res.json())
+      .then((res) => {
+        setUsers(res);
+      });
+  }, []);
   const handleLog =()=>{
     // setCurrentUser(currentUser ===true?false:true)
     // userMenu(true)
   }
+  const idUser = parseInt(localStorage.getItem('key'));
+
+  useEffect(() => {
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].id == idUser) {
+        setCurrentUser(true);
+      } else if (users[i].id == !idUser) {
+        setCurrentUser(false);
+      }
+    }
+  });
 
   //HandleLogic
   const handleMenuChange = (menuItem) => {

@@ -97,7 +97,7 @@ const ReelsHome = ({data}) => {
     
         <div className={cx('wrapper')}>
           <div className={cx('top-top')}>
-            <Link className={cx('avt')} to="/profile/@chuyenn">
+            <Link className={cx('avt')} to={`/profile/@${data.name}`}>
               <img className={cx('avt-user')} src={data.avt} />
             </Link>
             <div className={cx('reel')}>

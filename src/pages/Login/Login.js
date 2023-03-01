@@ -11,8 +11,7 @@ import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 const Login = () => {
-
-  const [currentUser, setCurrentUser]=useState(false)
+  const [currentUser, setCurrentUser] = useState(false);
 
   const [userValid, setUserValid] = useState(true);
   const [passValid, setPassValid] = useState(true);
@@ -22,7 +21,7 @@ const Login = () => {
 
   const [searchResult, setSearchResult] = useState([]);
   const [suggestion, setSuggestion] = useState([]);
- const [loginValid,setLoginValid]=useState(false)
+  const [loginValid, setLoginValid] = useState(false);
 
   useEffect(() => {
     fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
@@ -48,15 +47,16 @@ const Login = () => {
         return usr.username.match(regex);
       });
     }
-   setTimeout(
+    setTimeout(
       setAccount({
         ...account,
         user: value,
-      }),500)
-   
+      }),
+      500,
+    );
+
     setSuggestion(matches);
     setShowSuggest(true);
-  
   };
 
   const hideSuggest = () => {
@@ -71,36 +71,36 @@ const Login = () => {
     } else {
       setPassValid(false);
     }
-     setTimeout(setAccount({
+    setTimeout(
+      setAccount({
         ...account,
         pass: value,
-      }),500)
-  }
+      }),
+      500,
+    );
+  };
 
   function showPass() {
     setHidden((prev) => !prev);
   }
 
-  const handleLogin =()=>{
-    for(var i = 0; i < suggestion.length; i++) {
-      if(suggestion[i].username==account.user&&suggestion[i].password==account.pass){
-        setLoginValid(true)
-        if(!localStorage.id){
-          localStorage.setItem('key',suggestion[i].id)
-         }
-         else{
-           localStorage.id=suggestion[i].id
-         }
-      setCurrentUser(true)
-    }
-      else{
+  const handleLogin = () => {
+    for (var i = 0; i < suggestion.length; i++) {
+      if (suggestion[i].username == account.user && suggestion[i].password == account.pass) {
+        setLoginValid(true);
+        if (!localStorage.id) {
+          localStorage.setItem('key', suggestion[i].id);
+        } else {
+          localStorage.id = suggestion[i].id;
+        }
+
+        setCurrentUser(true);
+      } else {
         setLoginValid(false);
       }
-  }
- }
+    }
+  };
 
-
-  
   return (
     <div className={cx('container')} onClick={hideSuggest}>
       <div className={cx('title')}>Log in</div>
@@ -114,7 +114,7 @@ const Login = () => {
             <input type="text" style={{ width: '80%' }} onChange={handleUserChange}></input>
           </div>
           <div className={cx('suggestions')}>
-            {showSuggest
+            {!showSuggest
               ? suggestion.map((suggest, i) => (
                   <div key={i} className={cx('suggestion')}>
                     {suggest.username}
@@ -138,13 +138,13 @@ const Login = () => {
         <div className={cx('forgotPass')}>Forgot passWord?</div>
         {!currentUser ? (
           <button className={cx('loginButton')} type="submit" onClick={handleLogin}>
-          Log in
-        </button>
-        ):(
-          <Link className={cx('loginLink')} type="submit" to='/' onClick={handleLogin}>
-          Log in
-        </Link>
-        ) }
+            Log in
+          </button>
+        ) : (
+          <Link className={cx('loginLink')} type="submit" to="/profile/:id" onClick={handleLogin}>
+            Log in
+          </Link>
+        )}
         <div className={cx('otherChoice')}>
           <hr style={{ width: '40%' }}></hr>
           <span className={cx('otherChoiceTitle')}>Or</span>
