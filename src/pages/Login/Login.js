@@ -17,7 +17,7 @@ const Login = () => {
   const [userValid, setUserValid] = useState(true);
   const [passValid, setPassValid] = useState(true);
   const [account, setAccount] = useState({ user: '', pass: '' });
-  const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(false);
   const [showSuggest, setShowSuggest] = useState(false);
 
   const [searchResult, setSearchResult] = useState([]);
