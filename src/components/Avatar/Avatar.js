@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 export function AvatarEdit() {
   const [avatar, setAvatar] = useState();
-
   useEffect(() => {
     return () => {
       avatar && URL.revokeObjectURL(avatar.preview);
@@ -22,4 +21,8 @@ export function AvatarEdit() {
       {avatar && <img src={avatar.preview} width="80%" alt="" />}
     </div>
   );
+}
+export function AvatarModal(users, id){
+  const foundUser = users.find((user) => user.id === id);
+  return foundUser || {};
 }
