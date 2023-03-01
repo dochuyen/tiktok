@@ -194,7 +194,7 @@ const UpLoad = () => {
 
             <div className={cx('buttons')}>
               <button className={cx('cancelBtn')}>Hủy Bỏ</button>
-              {userProfile?(<button className={cx('btn')} onClick={upload}>Đăng</button>):(
+              {!userProfile?(<button className={cx('btn')} onClick={upload}>Đăng</button>):(
                 <Link to='/profile/:id' className={cx('btn')} onClick={upload}>Đăng</Link>
               )}
               
