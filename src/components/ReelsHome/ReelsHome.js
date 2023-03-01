@@ -31,7 +31,7 @@ const ReelsHome = ({data}) => {
  
 
   const [followStatus, setFollowStatus] = useState({});
-  const storageTyms = localStorage.getItem('countTym');
+  // const storageTyms = localStorage.setItem('tym', countTym);
 
   const [follow, setFollow] = useState('Follow');
   const [tym, setTym] = useState('');

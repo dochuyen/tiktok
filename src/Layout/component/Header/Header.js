@@ -60,24 +60,43 @@ const Header = () => {
   //    setLogOut(true)
   //   )
   // },[currentUser])
-  const [suggestion, setSuggestion] = useState([]);
+ 
   const [account, setAccount] = useState({ user: '', pass: '' });
   const [currentUser, setCurrentUser] = useState(false);
   const [loginValid, setLoginValid] = useState(false);
 
-  useEffect(()=>{
-    for (var i = 0; i < suggestion.length; i++) {
-      if (localStorage.id = suggestion[i].id) {
-        setLoginValid(true);
-        
-        setCurrentUser(true);
-        console.log('hello')
-      } else {
-        setCurrentUser(false)
-        setLoginValid(false);
-      }
+  const [users, setUsers] = useState([]);
+
+  const [user, setUser] = useState({
+    username: 'bachquanghung1911',
+    password: 'Bachquanghung@1911',
+    videos: [],
+    name: 'name 1',
+    followers: 44,
+    likes: 58,
+    avatar: '',
+    id: '1',
+  });
+
+  const [videoUploaded, setVideoUploaded] = useState('');
+  useEffect(() => {
+    fetch('https://63fa02d9897af748dcc7907c.mockapi.io/account')
+      .then((res) => res.json())
+      .then((res) => {
+        setUsers(res);
+      });
+  }, []);
+
+  const idUser =parseInt(localStorage.getItem('key'))
+
+ useEffect(()=>{
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id == idUser) {
+      setCurrentUser(true)
     }
-  }, [])
+  }
+ })
+
 
   //HandleLogic
   const handleMenuChange = (menuItem) => {
