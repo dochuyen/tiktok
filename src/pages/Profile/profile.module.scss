@@ -40,15 +40,18 @@
 .status {
   margin-top: 22px;
   display: block;
+  ul {
+    display: flex;
+    width: 500px;
+    flex-wrap: nowrap;
+  }
   ul > li {
-    display: inline-flex;
-    margin-right: 10px;
     color: #333;
     width: 150px;
   }
 
   span {
-    margin-left: 6px;
+    margin-left: 5px;
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
@@ -67,6 +70,7 @@
 }
 .btn-tabs {
   display: flex;
+  width: 500px;
 }
 .btn-tabs > button {
   width: 230px;
@@ -96,7 +100,7 @@
     display: inline-flex;
 
     h5 {
-      margin-top: 30px;
+      margin: 30px 0 0 5px;
     }
   }
   .tiktok-video {
@@ -110,5 +114,10 @@
     flex-wrap: wrap;
     overflow: hidden;
     margin-right: 10px;
+    video {
+      width: 187px;
+      height: 248px;
+      z-index: -1;
+    }
   }
 }

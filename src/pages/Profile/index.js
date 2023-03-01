@@ -7,6 +7,11 @@ import ModalMy from 'components/Modal/modal';
 const cx = classNames.bind(styles);
 
 const Profile = () => {
+  const [playing, setPlaying] = useState(false);
+
+  const handleClick = () => {
+    setPlaying(!playing);
+  };
   const tabs = ['Videos', 'Likeds'];
   const [data, setData] = useState([]);
   const [type, setType] = useState('Videos');
@@ -17,18 +22,19 @@ const Profile = () => {
   useEffect(() => {
     fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
       .then((res) => res.json())
-      .then((res) => {
-        setUsers(res);
+      .then((data) => {
+        setUsers(data);
       });
-  }, []);
+  }, [data]);
 
-  const idUser = +localStorage.key;
-
-  for (var i = 0; i < users.length; i++) {
-    if (users[i].id == idUser) {
-      setUser(users[i]);
+  const idUser = parseInt(localStorage.getItem('key'));
+  console.log(idUser);
+  useEffect(() => {
+    const foundUser = users.find((user) => user.id == idUser);
+    if (foundUser) {
+      setUser(foundUser);
     }
-  }
+  }, [idUser, users]);
   return (
     <>
       <div className={cx('wrapper')}>
@@ -79,16 +85,20 @@ const Profile = () => {
             ))}
           </div>
           <div className={cx('list-videos')} key={user.id}>
-            <div className={cx('box-video')}>
-              <div className={cx('content-video')}>
-                <div className={cx('tiktok-video')}>
-                  <img src={user.video} alt="" />
+            {user &&
+              user.videos &&
+              user.videos.map((video) => (
+                <div className={cx('box-video')} key={video.id}>
+                  <div className={cx('content-video')}>
+                    <div className={cx('tiktok-video')}>
+                      <video src="" controls />
+                    </div>
+                  </div>
+                  <div>
+                    <h5> {user.content} </h5>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h5> {user.content} </h5>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
       </div>
