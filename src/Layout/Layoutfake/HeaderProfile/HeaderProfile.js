@@ -51,7 +51,7 @@ const MENU_ITEMS = [
     title: 'Keyboard shortcuts',
   },
 ];
-const HeaderProfile = () => {
+const Header = () => {
   // const [logOut, setLogOut] = useState(false);
   // useEffect(()=>{
   //   if(!logOut){
@@ -60,13 +60,9 @@ const HeaderProfile = () => {
   //    setLogOut(true)
   //   )
   // },[currentUser])
-  const [users, setUsers] = useState([]);
 
   const [currentUser, setCurrentUser] = useState(false);
-  const handleLog =()=>{
-    // setCurrentUser(currentUser ===true?false:true)
-    // userMenu(true)
-  }
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     fetch('https://63fa02d9897af748dcc7907c.mockapi.io/account')
       .then((res) => res.json())
@@ -74,7 +70,10 @@ const HeaderProfile = () => {
         setUsers(res);
       });
   }, []);
-
+  const handleLog =()=>{
+    // setCurrentUser(currentUser ===true?false:true)
+    // userMenu(true)
+  }
   const idUser = parseInt(localStorage.getItem('key'));
 
   useEffect(() => {
@@ -177,4 +176,4 @@ const HeaderProfile = () => {
   );
 };
 
-export default HeaderProfile;
+export default Header;

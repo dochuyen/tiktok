@@ -141,7 +141,7 @@ const Login = () => {
             Log in
           </button>
         ) : (
-          <Link className={cx('loginLink')} type="submit" to="/" onClick={handleLogin}>
+          <Link className={cx('loginLink')} type="submit" to="/profile/:id" onClick={handleLogin}>
             Log in
           </Link>
         )}
