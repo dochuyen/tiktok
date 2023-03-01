@@ -3,7 +3,6 @@ import './Toggle.css'
 
 function Toggle(){
     const [on, setOn] = useState(false);
-    console.log(on)
     const handleToggle=()=>{
         setOn((on)=>!on);
     }
