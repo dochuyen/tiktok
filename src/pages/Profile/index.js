@@ -88,7 +88,7 @@ const Profile = () => {
               user.videos.map((video) => (
                 <div className={cx('box-video')} key={video.id}>
                   <div className={cx('content-video')}>
-                    <div className={cx('tiktok-video')}>
+                    <div className={cx('tiktok-video')} onClick={handleClick}>
                       <video src="" controls />
                     </div>
                   </div>

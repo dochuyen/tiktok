@@ -1,28 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BiEditAlt } from 'react-icons/bi';
 
-export function AvatarEdit() {
-  const [avatar, setAvatar] = useState();
-  useEffect(() => {
-    return () => {
-      avatar && URL.revokeObjectURL(avatar.preview);
-    };
-  }, [avatar]);
-  const handlePreView = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    console.log(URL.createObjectURL(file));
-    file.preview = URL.createObjectURL(file);
-    setAvatar(file);
-  };
+export function AvatarModal() {
+  function handleImageChange(users, id) {
+    const fileInput = document.getElementById('upload');
+    const preview = document.getElementById('imagePreview');
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      'load',
+      function () {
+        const base64 = reader.result.split(',')[1];
+
+        preview.innerHTML = `<img src="${reader.result}" />`;
+
+        sendDataToAPI(base64);
+      },
+      false,
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function sendDataToAPI() {}
 
   return (
     <div>
-      <input type="file" onChange={handlePreView} />
-      {avatar && <img src={avatar.preview} width="80%" alt="" />}
+      <input type="file" id="upload" hidden onChange={handleImageChange} />
+      <label for="upload">
+        <BiEditAlt />
+      </label>
+      <div id="imagePreview"></div>
     </div>
   );
-}
-export function AvatarModal(users, id){
-  const foundUser = users.find((user) => user.id === id);
-  return foundUser || {};
 }
