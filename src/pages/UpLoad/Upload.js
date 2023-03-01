@@ -2,15 +2,30 @@ import React, { useState, useRef, useEffect } from 'react';
 import styles from './Upload.module.scss';
 import classNames from 'classnames/bind';
 import Footer from './Footer';
-import Login from 'pages/Login/Login';
+
 import Toggle from './Toggle';
+import { Link } from 'react-router-dom';
+
 
 const cx = classNames.bind(styles);
-const videoUploaded='';
+
 const UpLoad = () => {
   const [charNumber, setCharNumber] = useState(0);
-  const [users,setUsers]=useState([])
+  const [users, setUsers] = useState([]);
+  const [userProfile, setUserProfile]=useState(false)
 
+  const [user, setUser] = useState({
+    username: '',
+    password: 'Bachquanghung@1911',
+    videos: [],
+    name: 'name 1',
+    followers: 44,
+    likes: 58,
+    avatar: '',
+    id: '1',
+  });
+
+  const [videoUploaded, setVideoUploaded] = useState('');
   useEffect(() => {
     fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
       .then((res) => res.json())
@@ -19,24 +34,59 @@ const UpLoad = () => {
       });
   }, []);
 
-const idUser=localStorage.key; 
-console.log(idUser)
+  const idUser = parseInt(localStorage.getItem('key'));
+
+
+
+  useEffect(() => {
+    const foundUser = users.find((user) => user.id == idUser);
+    if (foundUser) {
+      setUser(foundUser);
+    }
+  }, [idUser, users]);
+
 
   const handleRecivedFile = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log(reader.result)
-      videoUploaded=reader.result;
+      
+      setVideoUploaded(reader.result);
+    };
+  };
+
+
+  const upload=useEffect(()=>{
+    const updatedVideos=[...user.videos,'https://www.tiktok.com/@cunxinh_3/video/7199507255631465755?is_from_webapp=1']
+    let updatedUser={
+      ...user,videos:updatedVideos
     }
-  }
+    
+    fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account` + `/${idUser}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedUser),
+    })
+    console.log('k')
+    setUserProfile(true)
+
+  
+  }, [user])
+    
+    
+
+
 
   const handleCharNumber = (event) => {
     const value = event.target.value;
     const num = value.length;
     setCharNumber(num);
   };
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('uploadContainer')}>
@@ -45,27 +95,35 @@ console.log(idUser)
           <div className={cx('smallTitle')}>Đăng video vào tài khoản của bạn</div>
         </div>
         <div className={cx('uploadBody')}>
-          <div className={videoUploaded? cx('uploadFieldVideo'): cx('uploadField')}>
-            <div className={cx('uploadIcon')}>
-              <img src="https://lf16-tiktok-common.ttwstatic.com/obj/tiktok-web-common-sg/ies/creator_center/svgs/cloud-icon1.ecf0bf2b.svg"></img>
-            </div>
-            <div className={cx('uploadFieldBody')}>
-              <div className={cx('uploadFieldTitle')}>
-                <div className={cx('uploadFieldBigTitle')}>Chọn video để tải lên</div>
-                <div className={cx('uploadFieldSmallTitle uploadContent')}>Hoặc kéo và thả tập tin</div>
+          {videoUploaded ? (
+            <div
+              style={{ background: `url(${videoUploaded})`, backgroundSize: 'contain',backgroundRepeat:'no-repeat',backgroundPosition:'center'}}
+              className={cx('uploadFieldVideo')}
+            ></div>
+          ) : (
+            <div className={cx('uploadField')}>
+              <div className={cx('uploadIcon')}>
+                <img src="https://lf16-tiktok-common.ttwstatic.com/obj/tiktok-web-common-sg/ies/creator_center/svgs/cloud-icon1.ecf0bf2b.svg"></img>
               </div>
-              <div className={cx('uploadFieldContent')}>
-                <div className={cx('uploadContent')}>MP4 hoặc WebM</div>
-                <div className={cx('uploadContent')}>Độ phân giải 720x1280 trở lên</div>
-                <div className={cx('uploadContent')}>Tối đa 30 phút</div>
-                <div className={cx('uploadContent')}>Nhỏ hơn 2 GB</div>
+              <div className={cx('uploadFieldBody')}>
+                <div className={cx('uploadFieldTitle')}>
+                  <div className={cx('uploadFieldBigTitle')}>Chọn video để tải lên</div>
+                  <div className={cx('uploadFieldSmallTitle uploadContent')}>Hoặc kéo và thả tập tin</div>
+                </div>
+                <div className={cx('uploadFieldContent')}>
+                  <div className={cx('uploadContent')}>MP4 hoặc WebM</div>
+                  <div className={cx('uploadContent')}>Độ phân giải 720x1280 trở lên</div>
+                  <div className={cx('uploadContent')}>Tối đa 30 phút</div>
+                  <div className={cx('uploadContent')}>Nhỏ hơn 2 GB</div>
+                </div>
+                <button className={cx('uploadBtn')}>
+                  <input onChange={handleRecivedFile} type="file" id="upload" hidden />
+                  <label htmlFor="upload">Chọn tập tin</label>
+                </button>
               </div>
-              <button className={cx('uploadBtn')}>
-                <input onChange={handleRecivedFile} type="file" id="upload" hidden />
-                <label htmlFor="upload">Chọn tập tin</label>
-              </button>
             </div>
-          </div>
+          )}
+
           <div className={cx('adjustField')}>
             <div className={cx('fixField')}>
               <div className={cx('fixIcon')}>
@@ -136,13 +194,15 @@ console.log(idUser)
 
             <div className={cx('buttons')}>
               <button className={cx('cancelBtn')}>Hủy Bỏ</button>
-              <button className={cx('btn')}>Đăng</button>
+              {!userProfile?(<button className={cx('btn')} onClick={upload}>Đăng</button>):(
+                <Link to='/profile/:id' className={cx('btn')} onClick={upload}>Đăng</Link>
+              )}
+              
+
             </div>
           </div>
         </div>
       </div>
-
-      
       <Footer></Footer>
     </div>
   );
