@@ -51,6 +51,7 @@ const MENU_ITEMS = [
     title: 'Keyboard shortcuts',
   },
 ];
+
 const Header = () => {
   // const [logOut, setLogOut] = useState(false);
   // useEffect(()=>{
@@ -60,11 +61,10 @@ const Header = () => {
   //    setLogOut(true)
   //   )
   // },[currentUser])
- 
+
   const [account, setAccount] = useState({ user: '', pass: '' });
   const [currentUser, setCurrentUser] = useState(false);
   const [loginValid, setLoginValid] = useState(false);
-
   const [users, setUsers] = useState([]);
 
   const [user, setUser] = useState({
@@ -87,16 +87,17 @@ const Header = () => {
       });
   }, []);
 
-  const idUser =parseInt(localStorage.getItem('key'))
+  const idUser = parseInt(localStorage.getItem('key'));
 
- useEffect(()=>{
-  for (var i = 0; i < users.length; i++) {
-    if (users[i].id == idUser) {
-      setCurrentUser(true)
+  useEffect(() => {
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].id == idUser) {
+        setCurrentUser(true);
+      } else if (users[i].id == !idUser) {
+        setCurrentUser(false);
+      }
     }
-  }
- })
-
+  });
 
   //HandleLogic
   const handleMenuChange = (menuItem) => {
@@ -134,7 +135,7 @@ const Header = () => {
       icon: <BiLogIn />,
       title: 'logout',
       separate: true,
-      onclick
+      onclick,
     },
   ];
 
@@ -176,7 +177,7 @@ const Header = () => {
               </Button>
             </>
           )}
-          <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+          <Menu items={currentUser ? MENU_ITEMS : userMenu} onChange={handleMenuChange}>
             {currentUser ? (
               <img
                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/73242dcec546271c3d823a0172cc36ab~c5_720x720.jpeg?x-expires=1676977200&x-signature=KtjON9asTiQ%2BeV%2FJtzCKBuENJVw%3D"

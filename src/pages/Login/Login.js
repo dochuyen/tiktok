@@ -137,11 +137,11 @@ const Login = () => {
         </div>
         <div className={cx('forgotPass')}>Forgot passWord?</div>
         {!currentUser ? (
-          <button className={cx('loginButton')} type="submit" onClick={handleLogin}>
+          <button className={cx('loginButton')} type="submit" onDoubleClick={handleLogin}>
           Log in
         </button>
         ):(
-          <Link className={cx('loginLink')} type="submit" to='/' onClick={handleLogin}>
+          <Link className={cx('loginLink')} type="submit" to='/' onDoubleClick={handleLogin}>
           Log in
         </Link>
         ) }

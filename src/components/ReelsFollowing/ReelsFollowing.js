@@ -15,6 +15,7 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import { BsFacebook } from 'react-icons/bs';
 import axios from 'axios';
 import videofl from './videofl/video.mp4';
+import { Link } from 'react-router-dom';
 
 
 
@@ -81,17 +82,17 @@ const ReelsFollowing = ({ data, setUser }) => {
   return (
     <div className={cx('wrapper')}>
       <div className={cx('top-top')}>
-        <div className={cx('avt')}>
-          <img className={cx('avt-user')} src={data.avt} />
-        </div>
+      <Link className={cx('avt')} to={`/profile/@${data.name}`}>
+              <img className={cx('avt-user')} src={data.avt} />
+            </Link>
         <div className={cx('reel')}>
           <div className={cx('info')}>
             <div className={cx('info-child')}>
-              <div className={cx('use')} to={`/profile/@${data.name}`}>
-                <p className={cx('user-name')} >{data.name}</p>
-                {data.tick && <BsFillCheckCircleFill className={cx('check')} />}
-                <p className={cx('name')}>{data.nickname}</p>
-              </div>
+            <Link className={cx('use')} to={`/profile/@${data.name}`}>
+                    <p className={cx('user-name')}>{data.name}</p>
+                    {data.tick && <BsFillCheckCircleFill className={cx('check')} />}
+                    <p className={cx('name')}>{data.nickname}</p>
+                  </Link>
               <p className={cx('content')}>{data.content}</p>
               <h4 className={cx('sound')}>
                 <span className={cx('icon-sound')}>
