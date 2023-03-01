@@ -21,38 +21,24 @@ function ModalMy() {
       setInputValue(newValue);
     }
   };
-  const [avatar, setAvatar] = useState('');
-  useEffect(() => {
-    return () => {
-      avatar && URL.revokeObjectURL(avatar.preview);
-    };
-  }, [avatar]);
-  const handlePreView = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    console.log(URL.createObjectURL(file));
-    file.preview = URL.createObjectURL(file);
-    setAvatar(file);
-  };
+
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [bio, setBio] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (username && name && avatar) {
-      setFormSubmitted(true);
-      const newUser = { username, name, avatar };
-      fetch('https://63fa02d9897af748dcc7907c.mockapi.io/account', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newUser),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error(error));
-      setFormSubmitted(true);
-    }
+
+    const newUser = { username, name, bio };
+    fetch('https://63fa02d9897af748dcc7907c.mockapi.io/account', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newUser),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+    console.log(name);
   };
 
   return (
@@ -76,17 +62,7 @@ function ModalMy() {
               <div className={cx('info-user')}>
                 <label for="name">Ảnh hồ sơ :</label>
                 <div className={cx('info')}>
-                  {avatar && <img src={avatar.preview} alt="" />}
-                  <input
-                    type="file"
-                    id="upload"
-                    hidden
-                    value={avatar}
-                    onChange={(event) => setAvatar(event.target.value)}
-                  />
-                  <label for="upload">
-                    <BiEditAlt />
-                  </label>
+                  <AvatarModal></AvatarModal>
                 </div>
               </div>
               <hr />
