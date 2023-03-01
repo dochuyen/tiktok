@@ -4,9 +4,11 @@ import { BiEdit, BiEditAlt } from 'react-icons/bi';
 import { GrClose } from 'react-icons/gr';
 import classNames from 'classnames/bind';
 import styles from './modal.module.scss';
+import { AvatarModal } from 'components/Avatar/Avatar';
 const cx = classNames.bind(styles);
 
 function ModalMy() {
+  <AvatarModal></AvatarModal>;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleEditClick = () => {
     setIsModalOpen(!isModalOpen);

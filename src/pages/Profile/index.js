@@ -12,20 +12,18 @@ const Profile = () => {
   const handleClick = () => {
     setPlaying(!playing);
   };
-  const tabs = ['Videos', 'Likeds'];
-  const [data, setData] = useState([]);
-  const [type, setType] = useState('Videos');
+  const tabs = ['Videos', 'Liked'];
+  const [type, setType] = useState('videos');
   const [users, setUsers] = useState([]);
-
   const [user, setUser] = useState({});
 
   useEffect(() => {
     fetch(`https://63fa02d9897af748dcc7907c.mockapi.io/account`)
       .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
+      .then((res) => {
+        setUsers(res);
       });
-  }, [data]);
+  }, []);
 
   const idUser = parseInt(localStorage.getItem('key'));
   console.log(idUser);

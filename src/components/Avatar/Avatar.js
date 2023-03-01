@@ -22,3 +22,7 @@ export function AvatarEdit() {
     </div>
   );
 }
+export function AvatarModal(users, id){
+  const foundUser = users.find((user) => user.id === id);
+  return foundUser || {};
+}
