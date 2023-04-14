@@ -114,6 +114,8 @@ const Header = () => {
       icon: <BiLogIn />,
       title: 'logout',
       separate: true,
+      to:'/login',
+
       onclick,
     },
   ];
@@ -134,7 +136,6 @@ const Header = () => {
                   <button className={cx('action-btn')}>
                     <BiCloudUpload />
                   </button>
-
                 </Link>
               </Tippy>
               <Tippy delay={[0, 100]} content="Messenger">

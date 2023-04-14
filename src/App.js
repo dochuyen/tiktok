@@ -10,6 +10,7 @@ import {HeaderOnly} from './Layout';
 import { publicRoutes } from 'routes';
 import { DefaultLayout } from './Layout';
 import Layoutfake from 'Layout/Layoutfake/Layoutfake';
+import Register from 'pages/Register/Register';
 
 const App = () => {
   return (
@@ -43,6 +44,8 @@ const App = () => {
             );
           })}
           <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+
           <Route path='/upload' element={
             <HeaderOnly>
               <UpLoad/>

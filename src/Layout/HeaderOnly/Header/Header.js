@@ -114,6 +114,8 @@ const Header = () => {
       icon: <BiLogIn />,
       title: 'logout',
       separate: true,
+      to:'/login',
+
       onclick,
     },
   ];

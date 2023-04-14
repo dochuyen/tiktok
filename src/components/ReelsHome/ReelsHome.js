@@ -37,6 +37,7 @@ const ReelsHome = ({data}) => {
   const [tym, setTym] = useState('');
   const [countTym, setCountTym] = useState(+`${data.tym}`);
 
+localStorage.setItem('countTym',countTym)
  
 
   const shareMenus = [
