@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/tiktok/static/css/main.68ac497b.css",
+    "main.js": "/tiktok/static/js/main.7cd71cef.js",
+    "static/js/787.fe00223f.chunk.js": "/tiktok/static/js/787.fe00223f.chunk.js",
+    "static/media/5.mp4": "/tiktok/static/media/5.5406ca8477451c529ae6.mp4",
+    "static/media/8.mp4": "/tiktok/static/media/8.18c07aaa7c9684feee02.mp4",
+    "static/media/3.mp4": "/tiktok/static/media/3.623b2d49b63a016128f7.mp4",
+    "static/media/1.mp4": "/tiktok/static/media/1.5b11eedfd1201c4585f0.mp4",
+    "static/media/7.mp4": "/tiktok/static/media/7.651049921734410f46e8.mp4",
+    "static/media/video.mp4": "/tiktok/static/media/video.5dfeb77d43964863afe2.mp4",
+    "static/media/2.mp4": "/tiktok/static/media/2.7e3bf6769a90a0873100.mp4",
+    "static/media/6.mp4": "/tiktok/static/media/6.40473463eae05cfecb1c.mp4",
+    "static/media/4.mp4": "/tiktok/static/media/4.c790aa3295ce686bbdee.mp4",
+    "static/media/ProximaNova-Semibold.woff2": "/tiktok/static/media/ProximaNova-Semibold.db7972dbe0b808f96bae.woff2",
+    "static/media/sofiapro-bold.woff2": "/tiktok/static/media/sofiapro-bold.1d7186488612ac20891f.woff2",
+    "static/media/Proxima-Nova-Bold.woff2": "/tiktok/static/media/Proxima-Nova-Bold.8dd475cbc90552d85f91.woff2",
+    "static/media/Proxima-Nova-Regular.woff2": "/tiktok/static/media/Proxima-Nova-Regular.6c83037ae28747e6d774.woff2",
+    "static/media/logo.svg": "/tiktok/static/media/logo.8f3d63c7587d9ffa2763988677907921.svg",
+    "index.html": "/tiktok/index.html",
+    "main.68ac497b.css.map": "/tiktok/static/css/main.68ac497b.css.map",
+    "main.7cd71cef.js.map": "/tiktok/static/js/main.7cd71cef.js.map",
+    "787.fe00223f.chunk.js.map": "/tiktok/static/js/787.fe00223f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.68ac497b.css",
+    "static/js/main.7cd71cef.js"
+  ]
+}
